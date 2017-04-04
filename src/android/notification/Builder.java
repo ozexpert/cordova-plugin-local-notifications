@@ -119,6 +119,8 @@ public class Builder {
         int smallIcon = options.getSmallIcon();
         int ledColor  = options.getLedColor();
         NotificationCompat.Builder builder;
+        NotificationCompat.InboxStyle inboxStyle =
+        new NotificationCompat.InboxStyle();
 
         builder = new NotificationCompat.Builder(context)
                 .setDefaults(0)
@@ -129,6 +131,7 @@ public class Builder {
                 .setAutoCancel(options.isAutoClear())
                 .setOngoing(options.isOngoing())
                 .setColor(options.getColor());
+        builder.setStyle(inboxStyle);
 
         if (ledColor != 0) {
             builder.setLights(ledColor, options.getLedOnTime(), options.getLedOffTime());
