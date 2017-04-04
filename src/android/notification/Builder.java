@@ -129,7 +129,9 @@ public class Builder {
                 .setAutoCancel(options.isAutoClear())
                 .setOngoing(options.isOngoing())
                 .setColor(options.getColor());
-        builder.setStyle(new NotificationCompat.BigTextStyle().bigText(options.getText()));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(options.getText()));
+        }
 
         if (ledColor != 0) {
             builder.setLights(ledColor, options.getLedOnTime(), options.getLedOffTime());
